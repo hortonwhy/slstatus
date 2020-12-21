@@ -64,15 +64,16 @@ static const char unknown_str[] = "n/a";
  */
 static const struct arg args[] = {
 	/* function format          argument */
-	{ run_command, "[%s]", "cat ~/scripts/weather.txt" },
-	{ run_command, "[🪙 %s]", "/bin/sh -c \"cat ~/scripts/btc.txt\"" },
-	{ cpu_perc, "[CPU %s%%]", NULL  },
-	{ temp,    "[🌡%s°]" ,"/sys/class/thermal/thermal_zone0/temp"},
-	{ ram_used, "[RAM %s]", NULL    },
-	{ wifi_perc, "[WIFI %s%%]", "wlan0"    },
-	{ wifi_essid, "[📡%s]", "wlan0"    },
-        { run_command, "[🔉%s%%]", "/bin/sh -c \"amixer get Master | tail -n1 | grep -Po '\\[\\K[^%]*' | head -n1\"" },
-	{ battery_perc, "[🔋%2s%%]", "BAT0"    },
-//	{ battery_state, "[⚡%s]", "BAT0"    },
-	{ datetime, "[%s]", "%F %H:%M" },
+	//{ run_command, "[%s]", "cat ~/scripts/weather.txt" },
+	//{ run_command, "[ %s]", "/bin/sh -c \"cat ~/scripts/btc.txt\"" },
+	{ cpu_perc, "| 💻 %s%% ", NULL  },
+	{ temp,    "| 🌡 %s°" ,"/sys/class/thermal/thermal_zone0/temp"},
+	{ ram_used, "| 🧠 %s ", NULL    },
+	{ wifi_perc, "| 📡 %s%%", "wlp3s0"    },
+	{ wifi_essid, " %s ", "wlp3s0"    },
+        { run_command, "| 🔊 %s%% ", "/bin/sh -c \"amixer get Master | tail -n1 | grep -Po '\\[\\K[^%]*' | head -n1\"" },
+	//{ battery_perc, "| 🔋 %2s%% ", "BAT0"    },
+	{ run_command, "| 🔋 %2s%% ", "/bin/sh -c \"python3 ~/scripts/two_bats.py\""	},
+//	{ battery_state, "[%s]", "BAT0"    },
+	{ datetime, "| %s |" , "%F %H:%M" },
 };
